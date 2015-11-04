@@ -339,7 +339,7 @@ implements LayerChangeListener, ZoomChangeListener, MouseListener, PreferenceCha
 
         private void updateSelection(final DataSet result) {
             final RoadSegment roadSegment = layer.lastSelectedRoadSegment();
-            if (result != null) {
+            if (result != null && !GraphicsEnvironment.isHeadless()) {
                 if (!result.getClusters().isEmpty()) {
                     // clear segment details
                     dialog.updateUI(null, null);
