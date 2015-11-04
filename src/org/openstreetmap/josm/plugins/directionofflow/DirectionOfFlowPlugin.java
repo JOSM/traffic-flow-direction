@@ -314,7 +314,7 @@ implements LayerChangeListener, ZoomChangeListener, MouseListener, PreferenceCha
 
         @Override
         public void run() {
-            if (Main.map != null && Main.map.mapView != null) {
+            if (Main.isDisplayingMapView()) {
                 final BoundingBox bbox = new BoundingBox(Main.map.mapView);
                 if (bbox != null) {
                     final int zoom = Util.zoom(Main.map.mapView.getRealBounds());
@@ -324,7 +324,9 @@ implements LayerChangeListener, ZoomChangeListener, MouseListener, PreferenceCha
 
                         @Override
                         public void run() {
-                            new TipDialog().displayDialog(zoom);
+                            if (!GraphicsEnvironment.isHeadless()) {
+                                new TipDialog().displayDialog(zoom);
+                            }
                             layer.setDataSet(result);
                             updateSelection(result);
                             Main.map.repaint();
