@@ -47,7 +47,7 @@
 	<target name="javadoc">
 		<mkdir dir="${plugin.apidoc.dir}" />
 		<javadoc destdir="${plugin.apidoc.dir}" source="1.7" 
-			classpathref="classpath" windowtitle="MissingGeometry plugin API">
+			classpathref="classpath" windowtitle="Traffic Flow Direction plugin API">
 			<link href="http://java.sun.com/javase/7/docs/api/" />
 			<packageset dir="${plugin.src.dir}">
 			</packageset>
@@ -76,8 +76,6 @@
 			</fileset>
 		</copy>
 		<jar destfile="${plugin.jar}" basedir="${plugin.build.dir}">
-			<zipfileset src="${plugin.lib.dir}/gson-2.2.4.jar" />
-			<zipfileset src="${plugin.lib.dir}/commons-io-2.4.jar" />
 			<manifest>
 				<attribute name="Author" value="telenav" />
 				<attribute name="Plugin-Class" value="org.openstreetmap.josm.plugins.directionofflow.DirectionOfFlowPlugin" />
@@ -85,7 +83,8 @@
 				<attribute name="Plugin-Description" value="This project is helping you improve the OSM map by pointing at roads that probably have an inaccurate traffic flow direction in OSM." />
 				<attribute name="Plugin-Link" value="https://wiki.openstreetmap.org/wiki/JOSM/Plugins/TrafficFlowDirection" />
 				<attribute name="Plugin-Icon" value="images/directionofflow_logo_50x50.png" />
-				<attribute name="Plugin-Mainversion" value="1" />
+				<attribute name="Plugin-Mainversion" value="7001" />
+				<attribute name="Plugin-Requires" value="apache-commons;gson" />
 				<attribute name="Plugin-Version" value="${build-label}" />
 			</manifest>
 		</jar>
